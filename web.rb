@@ -4,7 +4,7 @@ require 'dotenv'
 
 Dotenv.load
 
-Stripe.api_key = ENV['STRIPE_TEST_SECRET_KEY']
+Stripe.api_key = ENV['STRIPE_LIVE_SECRET_KEY']
 
 get '/' do
   status 200
@@ -22,7 +22,7 @@ post '/charge' do
       :amount => params[:amount], # this number should be in cents
       :currency => "usd",
       :card => token,
-      :description => "Example Charge"
+      :description => "PsyPic Charge"
     )
   rescue Stripe::CardError => e
     status 402
